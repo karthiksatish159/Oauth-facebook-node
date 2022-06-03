@@ -12,7 +12,7 @@ opts=
 module.exports=passport=>{passport.use(new FacebookStrategy(opts,
  (accessToken,RefershToken,profile,done)=>
 {
-  console.log(profile);
+//   console.log(profile);
   User.findOne({username:profile.displayName})
   .then((user)=>
   {

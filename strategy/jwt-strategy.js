@@ -3,9 +3,7 @@ const ExtractJwt=require('passport-jwt').ExtractJwt;
 const opts={}
 const User=require('../models/User');
 const cookieExtractor = function (req) {
-    let token=req.cookies;
-    // console.log(req.cookies);
-    console.log(req.header);
+    let token=req.cookies.token;
     return token;
 };
 opts.jwtFromRequest=cookieExtractor;

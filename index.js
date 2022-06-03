@@ -16,7 +16,7 @@ const jwt=require('jsonwebtoken');
 app.use(bodyparser.urlencoded({extended:false}));
 app.use(bodyparser.json());
 app.use(cookieParser());
-app.use(session({secret:"This fb"}));
+app.use(session({secret:"login$"}));
 app.set('view engine','ejs');
 
 
