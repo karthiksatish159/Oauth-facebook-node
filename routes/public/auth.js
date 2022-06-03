@@ -10,6 +10,7 @@ router.get('/login',(req,res)=>
     res.send('index')
 })
 //Normal authectication
+//This not yet done it is for General users who not have social media accounts
 router.post('/verify',(req,res)=>
 {
     User.findOne({email:req.email})
@@ -59,12 +60,14 @@ router.post('/verify',(req,res)=>
     .catch(err=>console.log(err))
 })
 router.get('/facebook',passport.authenticate('facebook',{scope:'email'}))
+//Facebook authentication and setting the jwt token in cookie
 router.get('/facebook/callback',passport.authenticate('facebook'),(req,res)=>
 {
 
          var ip = req.socket.remoteAddress
          var clientIp = requestIp.getClientIp(req);
       
+            //So here req.user.id is FbId which is assging by Facebook strategy don't confuse with mongoDb-id
         User.findOne({FbId:req.user.id})
         .then((person)=>
         {
