@@ -66,7 +66,7 @@ router.get('/facebook/callback',passport.authenticate('facebook'),(req,res)=>
 
          var ip = req.socket.remoteAddress
          var clientIp = requestIp.getClientIp(req);
-      
+        console.log(req);
             //So here req.user.id is FbId which is assging by Facebook strategy don't confuse with mongoDb-id
         User.findOne({FbId:req.user.id})
         .then((person)=>
